@@ -1,32 +1,42 @@
-= Spring Data - Release Train BOM example
+[](#spring-data---release-train-bom-example)Spring Data - Release Train BOM示例
+=============================================================================
 
-This project shows the usage of the Spring Data release train in a non-Spring-Boot project with both Maven and Gradle.
+该项目在Maven和Gradle的非Spring-Boot项目中显示了Spring Data版本系列的用法。
 
-== Properties
+[](#properties)属性
+-----------------
 
-In both Maven and Gradle a couple of properties are used to define the versions of Spring Framework and Spring Data to use. For Spring Framework a plain version is used. For Spring Data we refer to a particular revision of a release train. The naming of Spring Data releases uses the following conventions:
+在Maven和Gradle中，使用了几个属性来定义要使用的Spring Framework和Spring Data的版本。对于Spring Framework，使用普通版本。对于Spring Data，我们引用了版本系列的特定修订版。Spring Data发行版的命名使用以下约定：
 
-** `${release-train}-M1` -> Milestones
-** …
-** `${release-train}-RC1` -> Release candidate
-** …
-** `${release-train}-RELEASE` -> GA version
-** `${release-train}-SR1` -> Services release (bugfixes) for that release train
+*   `${release-train}-M1` →里程碑
+    
+*   ...
+    
+*   `${release-train}-RC1` →发布候选人
+    
+*   ...
+    
+*   `${release-train}-RELEASE` →GA版
+    
+*   `${release-train}-SR1` →该发布列车的服务发布（错误修正）
+    
 
-== Maven
+[](#maven)Maven的
+----------------
 
-The `<dependencyManagement />` section declares dependencies to the BOMs for both Spring and Spring Data, using the `import` scope and `pom` type.
+该`<dependencyManagement />`部分使用`import`范围和`pom`类型声明Spring和Spring数据的BOM表的依赖关系。
 
-The standard `<dependencies />` section can now list Spring Framework and Spring Data dependencies without declaring a version and still be sure all libraries are in matching versions.
+标准`<dependencies />`部分现在可以列出Spring Framework和Spring Data依赖项，而无需声明版本，并且仍然可以确保所有库都处于匹配版本中。
 
-Note, that we don't declare a Spring Framework dependency here. The import of the Spring Framework BOM nonetheless makes sure we control the version of all transitive Spring Framework dependencies pulled in by the Spring Data modules.
+请注意，我们在此处未声明Spring Framework依赖项。尽管如此，导入Spring Framework BOM可确保我们控制Spring Data模块引入的所有传递Spring Framework依赖项的版本。
 
-== Gradle
+[](#gradle)摇篮
+-------------
 
-Gradle does not support Maven BOMs out of the box so the first thing to do is to declare a buildscript dependency on the https://github.com/spring-gradle-plugins/dependency-management-plugin[dependency management plugin] and apply it to the project.
+Gradle不支持开箱即用的Maven BOM，因此首先要做的是在[依赖关系管理插件](https://github.com/spring-gradle-plugins/dependency-management-plugin)上声明一个buildscript依赖项并将其应用到项目中。
 
-With the plugin applied, the `dependencyManagement` section can be used to import the Spring Framework and Spring Data BOMs.
+应用插件后，该`dependencyManagement`部分可用于导入Spring Framework和Spring Data BOM。
 
-The standard `dependencies` section can now list Spring and Spring Data dependencies without declaring a version and still be sure all libraries are in matching versions.
+标准`dependencies`部分现在可以列出Spring和Spring Data依赖项，而无需声明版本，并且仍然确保所有库都在匹配版本中。
 
-Note, that we don't declare a Spring Framework dependency here. The dependency management plugin and Spring Framework BOM nonetheless makes sure we control the version of all transitive Spring Framework dependencies pulled in by the Spring Data modules.
+请注意，我们在此处未声明Spring Framework依赖项。尽管如此，依赖管理插件和Spring Framework BOM仍然可以确保我们控制Spring Data模块引入的所有传递Spring Framework依赖项的版本。
